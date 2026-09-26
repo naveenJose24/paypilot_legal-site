@@ -4,7 +4,7 @@ Static, dependency-free pages for GitHub Pages or Cloudflare Pages.
 
 ## Before publishing
 
-Replace every remaining bracketed value in the HTML files: `[Legal Entity Name]`, `[Postal Address]`, `[Country]`, `[Effective Date]`, `[Last Updated]`, `[Minimum Age]`, `[Jurisdiction]`, and `[Venue]`. Support and privacy contact links currently use `appgenieteam@gmail.com`.
+The current draft uses AppGenie, India, a minimum age of 10, an effective date of 1 September 2026, and a last-updated date of 26 September 2026. Support and privacy contact links use `appgenieteam@gmail.com`.
 
 Have the privacy policy, terms, deletion/retention wording, age language, and jurisdiction reviewed by qualified counsel for every launch market. Confirm live app permissions and third-party providers immediately before publishing.
 
