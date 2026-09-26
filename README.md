@@ -4,7 +4,7 @@ Static, dependency-free pages for GitHub Pages or Cloudflare Pages.
 
 ## Before publishing
 
-Replace every bracketed value in the HTML files: `[Legal Entity Name]`, `[Privacy Email]`, `[Support Email]`, `[Postal Address]`, `[Country]`, `[Effective Date]`, `[Last Updated]`, `[Minimum Age]`, `[Jurisdiction]`, and `[Venue]`.
+Replace every remaining bracketed value in the HTML files: `[Legal Entity Name]`, `[Postal Address]`, `[Country]`, `[Effective Date]`, `[Last Updated]`, `[Minimum Age]`, `[Jurisdiction]`, and `[Venue]`. Support and privacy contact links currently use `appgenieteam@gmail.com`.
 
 Have the privacy policy, terms, deletion/retention wording, age language, and jurisdiction reviewed by qualified counsel for every launch market. Confirm live app permissions and third-party providers immediately before publishing.
 
