@@ -160,8 +160,8 @@ def sitemap() -> str:
 
 
 def with_favicon(html: str) -> str:
-    favicon = '<link rel="icon" type="image/png" href="../paypilot_logo.png">'
-    return html.replace("<head>", f"<head>{favicon}", 1)
+    head_assets = '<link rel="icon" type="image/png" href="../paypilot_logo.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">'
+    return html.replace("<head>", f"<head>{head_assets}", 1)
 
 
 def main() -> None:
