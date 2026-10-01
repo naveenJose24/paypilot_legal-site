@@ -35,10 +35,9 @@
     <div class="legal-layout">
       <nav class="toc" aria-label="On this page">
         <a href="#before">Before you start</a>
-        <a href="#bank-sms">1. Bank SMS (payments)</a>
-        <a href="#money-in">2. Money coming in</a>
-        <a href="#apple-pay">3. Apple Pay</a>
-        <a href="#bank-apps">4. Bank &amp; UPI apps</a>
+        <a href="#bank-sms">1. Bank SMS</a>
+        <a href="#apple-pay">2. Apple Pay</a>
+        <a href="#bank-apps">3. Bank &amp; UPI apps</a>
         <a href="#check">Check it works</a>
         <a href="#troubleshooting">Troubleshooting</a>
         <a href="#privacy">Your privacy</a>
@@ -58,40 +57,30 @@
 
         <section id="bank-sms">
           <span class="step-tag">Automation 1</span>
-          <h2>Bank SMS: payments going out</h2>
-          <p>Logs every bank text that says money left your account (UPI, card, transfers) from any bank in India or the UAE.</p>
+          <h2>Bank SMS: money out and money in</h2>
+          <p>One automation logs every bank text about money moving, from any bank in India or the UAE: UPI, card and transfer debits, and (with <strong>PayPilot Credit</strong>) salary, transfers received, deposits and refunds.</p>
           <ol class="steps">
             <li>Open the <strong>Shortcuts</strong> app, go to the <strong>Automation</strong> tab and tap <strong>+</strong>. If it asks “What do you want your shortcut to do?”, tap <strong>Edit</strong> instead of typing.</li>
             <li>Choose the trigger <strong>When I receive a message</strong>.</li>
-            <li>Under <strong>where</strong>, set the filter to <strong>Message contains</strong> and type <code>debited</code>. If the filter shows Sender, tap it and pick <strong>Message</strong>.</li>
+            <li>Under <strong>where</strong>, set the filter to <strong>Message contains</strong> and type <code>ited</code>. If the filter shows Sender, tap it and pick <strong>Message</strong>. <br><span class="meta">Why “ited”? It's the part shared by deb<strong>ited</strong>, cred<strong>ited</strong> and depos<strong>ited</strong>, so one automation catches money going out and coming in.</span></li>
             <li>Tap <strong>Search</strong> at the bottom, type <code>Log bank message</code> and pick the action with the <strong>PayPilot</strong> icon.</li>
             <li>Tap the action's message field → <strong>Select Variable</strong> → tap the message trigger → choose <strong>Content</strong>. Skip this if it already shows <em>Content</em>.</li>
             <li>Tap <strong>›</strong> on the action to show <strong>Sender</strong> → Select Variable → the trigger → <strong>Sender</strong>. This helps PayPilot recognise the bank.</li>
             <li>Make sure <strong>Automation</strong> is on and <strong>Confirm Before Run</strong> is off, so it runs silently. Rename it <em>PayPilot Bank SMS</em> and tap <strong>‹</strong> to save.</li>
+            <li>That's it. Money going out is logged as an expense. Money coming in is logged as income with PayPilot Credit, and only counted without it.</li>
           </ol>
           <div class="shots">
-            <figure><img src="images/guide/sms-automation.jpg" alt="Finished automation: When I receive a message where Message contains debited, then Log bank message with Content and Sender" width="572" height="1100" loading="lazy"><figcaption>The finished automation.</figcaption></figure>
+            <figure><img src="images/guide/sms-automation.jpg" alt="Finished automation: When I receive a message where Message contains debited, then Log bank message with Content and Sender" width="572" height="1100" loading="lazy"><figcaption>The finished automation. Type <code>ited</code> where this shows “debited”.</figcaption></figure>
             <figure><img src="images/guide/sms-filter-message.jpg" alt="Filter menu with Sender and Message, Message selected" width="572" height="1100" loading="lazy"><figcaption>Step 3: the filter must be <em>Message</em>.</figcaption></figure>
             <figure><img src="images/guide/sms-content.jpg" alt="Message variable menu with Content ticked" width="572" height="1100" loading="lazy"><figcaption>Step 5: pass the message's <em>Content</em>.</figcaption></figure>
             <figure><img src="images/guide/sms-sender.jpg" alt="Message variable menu with Sender ticked" width="572" height="1100" loading="lazy"><figcaption>Step 6: pass the <em>Sender</em> too.</figcaption></figure>
           </div>
-          <div class="callout warning"><p><strong>Bank uses other words?</strong> Some cards say “spent”, “sent” or “was used for” instead of “debited”. An iPhone message automation takes <strong>one word</strong>, so make another copy of this automation with that word.</p></div>
-        </section>
-
-        <section id="money-in">
-          <span class="step-tag">Automation 2 · PayPilot Credit</span>
-          <h2>Money coming in</h2>
-          <p>With <strong>PayPilot Credit</strong>, salary, transfers you receive, deposits and refunds are logged as income too. Without it, PayPilot only counts them and shows you how many came in.</p>
-          <ol class="steps">
-            <li>Make a new automation exactly like <a href="#bank-sms">Automation 1</a>, but in step 3 type <code>credited</code> instead of <code>debited</code>.</li>
-            <li>Name it <em>PayPilot Bank SMS (in)</em> and save.</li>
-            <li>Optional: one more with <code>deposited</code>, for cash deposits made at a machine.</li>
-          </ol>
-          <div class="callout"><p>One payment reported twice, for example by SMS and by the bank's app, is saved <strong>once</strong>.</p></div>
+          <div class="callout"><p><strong>Other messages with “ited”?</strong> Words like “limited” or “invited” also contain it. PayPilot reads those on your phone, sees they aren't payments, and drops them. Nothing is saved.</p></div>
+          <div class="callout warning"><p><strong>Card alerts with other words?</strong> A few cards say “spent” or “was used for” instead. An iPhone message automation takes <strong>one word</strong>, so if yours does, make one more copy of this automation with that word.</p></div>
         </section>
 
         <section id="apple-pay">
-          <span class="step-tag">Automation 3</span>
+          <span class="step-tag">Automation 2</span>
           <h2>Apple Pay</h2>
           <p>Logs every tap with a card in Wallet at a shop.</p>
           <div class="split">
@@ -109,7 +98,7 @@
         </section>
 
         <section id="bank-apps">
-          <span class="step-tag">Automation 4 · Optional</span>
+          <span class="step-tag">Automation 3 · Optional</span>
           <h2>Bank &amp; UPI app notifications</h2>
           <p>For banks and UPI apps that notify you in their app instead of by SMS.</p>
           <ol class="steps">
@@ -134,7 +123,7 @@
         <section id="troubleshooting">
           <h2>Troubleshooting</h2>
           <div class="faq-list">
-            <details><summary>Nothing was logged after a payment</summary><p>Check that <strong>Confirm Before Run</strong> is off and the automation is on. Make sure the SMS contains the word in your filter, e.g. “debited”. Then open PayPilot once: items queued while the app was closed are added when it opens.</p></details>
+            <details><summary>Nothing was logged after a payment</summary><p>Check that <strong>Confirm Before Run</strong> is off and the automation is on. Make sure the SMS contains the letters in your filter (<code>ited</code>, as in “debited” or “credited”). Then open PayPilot once: items queued while the app was closed are added when it opens.</p></details>
             <details><summary>It asks me to “Configure Sender”</summary><p>A Sender filter row was added by mistake. Tap the minus next to it to remove it. The automation only needs “Message contains …”.</p></details>
             <details><summary>The same payment appears twice</summary><p>PayPilot skips repeats from SMS, app notifications and Apple Pay for the same payment. If two genuinely different payments look identical, both are kept. Delete one by swiping left in Spend.</p></details>
             <details><summary>A one-time password or promotion was logged</summary><p>It shouldn't be: PayPilot ignores OTPs, offers, credits it can't confirm, and messages without an account or payment reference. If one gets through, swipe left to delete it and <a href="support.html">tell us the bank's wording</a> (with numbers removed) so we can fix it.</p></details>
@@ -145,7 +134,7 @@
         <section id="privacy">
           <h2>Your privacy</h2>
           <ul>
-            <li>PayPilot can't open your messages. iOS only hands over the texts and notifications your automations pick, such as SMS containing “debited”.</li>
+            <li>PayPilot can't open your messages. iOS only hands over the texts and notifications your automations pick: here, SMS containing “ited” (debited, credited, deposited). Anything that isn't a payment is dropped on the phone straight away.</li>
             <li>Messages are read on your iPhone. The text is never uploaded or sent to any server or AI, and it's deleted as soon as it's read.</li>
             <li>One-time passwords are recognised and thrown away immediately.</li>
             <li>Only the expense is kept: amount, merchant, date and the last 4 digits of the card, encrypted before backup.</li>
