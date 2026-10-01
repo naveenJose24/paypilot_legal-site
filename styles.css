@@ -127,3 +127,37 @@ figcaption { color: var(--muted); font-size: .86rem; text-align: center; margin-
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* Editorial money guides */
+.blog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.blog-card { padding: 0 0 22px; overflow: hidden; }
+.blog-card img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-bottom: 1px solid var(--line); margin-bottom: 20px; }
+.blog-card .eyebrow, .blog-card h2, .blog-card p, .blog-card .read-more { margin-inline: 22px; }
+.blog-card h2 { font-size: 1.3rem; line-height: 1.12; margin-top: 10px; }
+.blog-card p { margin-bottom: 18px; }
+.read-more { display: inline-block; color: var(--blue-deep); font-size: .9rem; font-weight: 800; }
+.blog-filter { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.filter-button { border: 1px solid var(--line); border-radius: 999px; padding: 9px 14px; background: var(--card); color: var(--muted); font: inherit; font-size: .86rem; font-weight: 750; cursor: pointer; }
+.filter-button:hover, .filter-button:focus-visible, .filter-button.is-active { border-color: var(--blue); color: var(--blue-deep); background: #eff8ff; }
+.blog-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 420px); align-items: center; gap: 48px; padding: 72px 0 48px; }
+.blog-hero h1 { max-width: 780px; font-size: clamp(2.5rem, 5vw, 4.7rem); margin: 14px 0; }
+.blog-art { width: 100%; height: auto; border-radius: 28px; border: 1px solid var(--line); box-shadow: var(--shadow); }
+.blog-layout { display: grid; grid-template-columns: 210px minmax(0, var(--measure)); gap: 58px; align-items: start; padding-bottom: 58px; }
+.blog-feature-grid { margin-top: 26px; }
+.blog-feature-grid .card { padding: 20px; }
+.blog-feature-grid h3 { margin-top: 0; }
+.blog-article .legal-content section { scroll-margin-top: 105px; }
+.blog-article .legal-content h2 { font-size: clamp(1.55rem, 3vw, 2.25rem); }
+
+@media (max-width: 860px) {
+  .blog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .blog-hero { grid-template-columns: 1fr; gap: 24px; }
+  .blog-art { max-width: 620px; }
+}
+
+@media (max-width: 760px) {
+  .blog-grid { grid-template-columns: 1fr; }
+  .blog-layout { display: block; }
+  .blog-layout .toc { position: static; margin-bottom: 36px; }
+  .blog-hero { padding-top: 42px; }
+}

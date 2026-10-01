@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-labelledby="title desc">
+  <title id="title">Private Expense Tracker for </title><desc id="desc">PayPilot editorial illustration for privacy.</desc>
+  <rect width="900" height="600" rx="42" fill="#fff0e9"/><rect x="34" y="34" width="832" height="532" rx="30" fill="none" stroke="#3b244b" stroke-opacity=".12" stroke-width="2"/>
+  <circle cx="670" cy="210" r="160" fill="none" stroke="#f08a5d" stroke-width="34" opacity=".45"/><circle cx="670" cy="210" r="75" fill="#f08a5d" opacity=".75"/><path d="M420 535c70-115 170-170 300-165 130 5 210 60 265 165" fill="none" stroke="#f08a5d" stroke-width="26" opacity=".42"/><text x="70" y="88" fill="#3b244b" font-family="Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="3">PAYPILOT / PRIVACY</text>
+  <text x="70" y="505" fill="#3b244b" font-family="Arial, sans-serif" font-size="35" font-weight="700">Private Expense Tracker for </text><circle cx="790" cy="500" r="22" fill="#f08a5d"/><circle cx="790" cy="500" r="8" fill="#fff0e9"/>
+</svg>
