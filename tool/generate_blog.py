@@ -159,13 +159,18 @@ def sitemap() -> str:
     return f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{body}</urlset>\n'
 
 
+def with_favicon(html: str) -> str:
+    favicon = '<link rel="icon" type="image/png" href="../paypilot_logo.png">'
+    return html.replace("<head>", f"<head>{favicon}", 1)
+
+
 def main() -> None:
     BLOG.mkdir(exist_ok=True)
     IMAGES.mkdir(parents=True, exist_ok=True)
     for index, post in enumerate(POSTS):
-        (BLOG / f"{post[0]}.html").write_text(article(post, index), encoding="utf-8")
+        (BLOG / f"{post[0]}.html").write_text(with_favicon(article(post, index)), encoding="utf-8")
         (IMAGES / f"{post[0]}.svg").write_text(svg_for(index, post[1], post[3]), encoding="utf-8")
-    (BLOG / "index.html").write_text(blog_index(), encoding="utf-8")
+    (BLOG / "index.html").write_text(with_favicon(blog_index()), encoding="utf-8")
     (ROOT / "sitemap.xml").write_text(sitemap(), encoding="utf-8")
     (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE_URL}/sitemap.xml\n", encoding="utf-8")
 
