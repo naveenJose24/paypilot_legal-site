@@ -89,7 +89,7 @@ def footer(prefix: str) -> str:
 
 def article(post, index: int) -> str:
     slug, title, keyword, category, summary, audience, look_for, method, features = post
-    generated_image = generated_image_for(index, category)
+    generated_image = generated_image_for(slug, index, category)
     related = [POSTS[(index + 1) % len(POSTS)], POSTS[(index + 7) % len(POSTS)], POSTS[(index + 13) % len(POSTS)]]
     feature_html = "".join(f"<li>{escape(item)}</li>" for item in features)
     related_html = "".join(f'<a class="card card-link" href="{r[0]}.html"><span class="eyebrow">{escape(r[3])}</span><h3>{escape(r[1])}</h3><p>{escape(r[4])}</p></a>' for r in related)
@@ -132,7 +132,10 @@ def filter_tags(category: str) -> str:
     return " ".join(sorted(tags))
 
 
-def generated_image_for(index: int, category: str) -> str:
+def generated_image_for(slug: str, index: int, category: str) -> str:
+    unique_path = f"images/blog-generated/{slug}.png"
+    if (ROOT / unique_path).exists():
+        return unique_path
     category_lower = category.lower()
     if any(term in category_lower for term in ("subscription", "bill", "budget", "planning")):
         return GENERATED_IMAGES["subscriptions" if "subscription" in category_lower else "budgeting"]
@@ -146,7 +149,7 @@ def generated_image_for(index: int, category: str) -> str:
 
 
 def blog_index() -> str:
-    cards = "".join(f'<a class="card card-link blog-card" data-category="{filter_tags(p[3])}" href="{p[0]}.html"><img src="../{generated_image_for(i, p[3])}" alt="Editorial illustration about {escape(p[1])}" width="800" height="1417" loading="lazy"><span class="eyebrow">{escape(p[3])}</span><h2>{escape(p[1])}</h2><p>{escape(p[4])}</p><span class="read-more">Read guide →</span></a>' for i, p in enumerate(POSTS))
+    cards = "".join(f'<a class="card card-link blog-card" data-category="{filter_tags(p[3])}" href="{p[0]}.html"><img src="../{generated_image_for(p[0], i, p[3])}" alt="Editorial illustration about {escape(p[1])}" width="800" height="1417" loading="lazy"><span class="eyebrow">{escape(p[3])}</span><h2>{escape(p[1])}</h2><p>{escape(p[4])}</p><span class="read-more">Read guide →</span></a>' for i, p in enumerate(POSTS))
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Practical PayPilot guides for expense tracking, budgets, bank SMS, UPI, AED spending, loans, subscriptions, privacy, and personal cash flow."><meta name="robots" content="index,follow"><link rel="canonical" href="{BASE_URL}/blog/"><meta property="og:type" content="website"><meta property="og:title" content="PayPilot money guides"><meta property="og:description" content="Practical guides for clearer everyday money tracking."><meta property="og:url" content="{BASE_URL}/blog/"><title>Money guides — PayPilot</title><link rel="stylesheet" href="../styles.css"><script type="application/ld+json">{escape_json({"@context": "https://schema.org", "@type": "WebSite", "name": "PayPilot", "url": BASE_URL})}</script></head><body>{header("../", "page")}<main><section class="page-hero page-shell"><span class="eyebrow">PayPilot money guides</span><h1>Clearer answers for everyday money.</h1><p>Practical, plain-language guides about expense tracking, budgets, bank alerts, UPI, AED spending, loans, subscriptions, privacy, and cash flow.</p><div class="blog-filter" role="group" aria-label="Filter guides"><button class="filter-button is-active" type="button" data-filter="all">All guides</button><button class="filter-button" type="button" data-filter="UAE">UAE</button><button class="filter-button" type="button" data-filter="India">India</button><button class="filter-button" type="button" data-filter="Privacy">Privacy</button><button class="filter-button" type="button" data-filter="Tracking">Tracking</button><button class="filter-button" type="button" data-filter="Comparisons">Comparisons</button></div></section><section class="section page-shell"><div class="blog-grid">{cards}</div></section></main>{footer("../")}<script src="../script.js"></script><script>document.querySelectorAll('[data-filter]').forEach(function(button){{button.addEventListener('click',function(){{document.querySelectorAll('[data-filter]').forEach(function(item){{item.classList.remove('is-active')}});button.classList.add('is-active');var filter=button.dataset.filter;document.querySelectorAll('.blog-card').forEach(function(card){{card.hidden=filter!=='all' && card.dataset.category.split(' ').indexOf(filter)===-1}})}})}});</script></body></html>'''
 
 
