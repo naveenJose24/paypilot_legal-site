@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Step-by-step guide with screenshots: set up PayPilot auto-capture on iPhone with Shortcuts automations for bank SMS, money received, Apple Pay and bank app notifications.">
+  <title>Auto-capture setup guide — PayPilot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html"><img class="brand-logo" src="paypilot_logo.png" alt="" width="38" height="38">PayPilot</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+      <nav class="site-nav" id="primary-nav" aria-label="Primary navigation">
+        <a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="faq.html">FAQ</a><a aria-current="page" href="auto-capture.html">Guide</a><a href="support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-hero">
+      <span class="eyebrow">Setup guide · iPhone</span>
+      <h1>Log payments automatically</h1>
+      <p>PayPilot can add an expense the moment your bank texts you or you pay with Apple Pay, with no typing. On iPhone this works through the Shortcuts app. This guide walks through each setup step by step, with screenshots.</p>
+      <div class="hero-actions">
+        <a class="button" href="#bank-sms">Start with bank SMS</a>
+        <button class="button secondary" type="button" data-copy-link>Copy link</button>
+      </div>
+    </section>
+
+    <div class="legal-layout">
+      <nav class="toc" aria-label="On this page">
+        <a href="#before">Before you start</a>
+        <a href="#bank-sms">1. Bank SMS (payments)</a>
+        <a href="#money-in">2. Money coming in</a>
+        <a href="#apple-pay">3. Apple Pay</a>
+        <a href="#bank-apps">4. Bank &amp; UPI apps</a>
+        <a href="#check">Check it works</a>
+        <a href="#troubleshooting">Troubleshooting</a>
+        <a href="#privacy">Your privacy</a>
+        <a href="#android">Android</a>
+      </nav>
+
+      <article class="legal-content">
+        <section id="before">
+          <h2>Before you start</h2>
+          <ul>
+            <li>An iPhone with <strong>iOS 17 or later</strong>. These steps follow iOS 27; older versions look slightly different.</li>
+            <li>PayPilot installed, and <strong>opened once while signed in</strong>, so Shortcuts knows its actions.</li>
+            <li>About two minutes per automation. You only do this once.</li>
+          </ul>
+          <div class="callout"><p><strong>Which ones do I need?</strong> Most people only need <a href="#bank-sms">Bank SMS</a> and <a href="#apple-pay">Apple Pay</a>. Add <a href="#bank-apps">bank &amp; UPI app notifications</a> if your bank doesn't text you.</p></div>
+        </section>
+
+        <section id="bank-sms">
+          <span class="step-tag">Automation 1</span>
+          <h2>Bank SMS: payments going out</h2>
+          <p>Logs every bank text that says money left your account (UPI, card, transfers) from any bank in India or the UAE.</p>
+          <ol class="steps">
+            <li>Open the <strong>Shortcuts</strong> app, go to the <strong>Automation</strong> tab and tap <strong>+</strong>. If it asks “What do you want your shortcut to do?”, tap <strong>Edit</strong> instead of typing.</li>
+            <li>Choose the trigger <strong>When I receive a message</strong>.</li>
+            <li>Under <strong>where</strong>, set the filter to <strong>Message contains</strong> and type <code>debited</code>. If the filter shows Sender, tap it and pick <strong>Message</strong>.</li>
+            <li>Tap <strong>Search</strong> at the bottom, type <code>Log bank message</code> and pick the action with the <strong>PayPilot</strong> icon.</li>
+            <li>Tap the action's message field → <strong>Select Variable</strong> → tap the message trigger → choose <strong>Content</strong>. Skip this if it already shows <em>Content</em>.</li>
+            <li>Tap <strong>›</strong> on the action to show <strong>Sender</strong> → Select Variable → the trigger → <strong>Sender</strong>. This helps PayPilot recognise the bank.</li>
+            <li>Make sure <strong>Automation</strong> is on and <strong>Confirm Before Run</strong> is off, so it runs silently. Rename it <em>PayPilot Bank SMS</em> and tap <strong>‹</strong> to save.</li>
+          </ol>
+          <div class="shots">
+            <figure><img src="images/guide/sms-automation.jpg" alt="Finished automation: When I receive a message where Message contains debited, then Log bank message with Content and Sender" width="572" height="1100" loading="lazy"><figcaption>The finished automation.</figcaption></figure>
+            <figure><img src="images/guide/sms-filter-message.jpg" alt="Filter menu with Sender and Message, Message selected" width="572" height="1100" loading="lazy"><figcaption>Step 3: the filter must be <em>Message</em>.</figcaption></figure>
+            <figure><img src="images/guide/sms-content.jpg" alt="Message variable menu with Content ticked" width="572" height="1100" loading="lazy"><figcaption>Step 5: pass the message's <em>Content</em>.</figcaption></figure>
+            <figure><img src="images/guide/sms-sender.jpg" alt="Message variable menu with Sender ticked" width="572" height="1100" loading="lazy"><figcaption>Step 6: pass the <em>Sender</em> too.</figcaption></figure>
+          </div>
+          <div class="callout warning"><p><strong>Bank uses other words?</strong> Some cards say “spent”, “sent” or “was used for” instead of “debited”. An iPhone message automation takes <strong>one word</strong>, so make another copy of this automation with that word.</p></div>
+        </section>
+
+        <section id="money-in">
+          <span class="step-tag">Automation 2 · PayPilot Credit</span>
+          <h2>Money coming in</h2>
+          <p>With <strong>PayPilot Credit</strong>, salary, transfers you receive, deposits and refunds are logged as income too. Without it, PayPilot only counts them and shows you how many came in.</p>
+          <ol class="steps">
+            <li>Make a new automation exactly like <a href="#bank-sms">Automation 1</a>, but in step 3 type <code>credited</code> instead of <code>debited</code>.</li>
+            <li>Name it <em>PayPilot Bank SMS (in)</em> and save.</li>
+            <li>Optional: one more with <code>deposited</code>, for cash deposits made at a machine.</li>
+          </ol>
+          <div class="callout"><p>One payment reported twice, for example by SMS and by the bank's app, is saved <strong>once</strong>.</p></div>
+        </section>
+
+        <section id="apple-pay">
+          <span class="step-tag">Automation 3</span>
+          <h2>Apple Pay</h2>
+          <p>Logs every tap with a card in Wallet at a shop.</p>
+          <div class="split">
+            <ol class="steps">
+              <li>In Shortcuts → <strong>Automation</strong> → <strong>+</strong>, then tap <strong>Edit</strong> if asked.</li>
+              <li>Choose the <strong>Wallet</strong> trigger <strong>When Any Card is tapped</strong>. Keep <em>Any Card</em>, <em>Any Category</em> and <em>Any Merchant</em>, or pick only the cards you want tracked.</li>
+              <li>Search for <code>Log Apple Pay Payment</code> and pick the PayPilot action.</li>
+              <li>Tap <strong>Amount</strong> → Select Variable → the trigger → <strong>Amount</strong>. Do the same for <strong>Merchant</strong> → <strong>Merchant</strong>.</li>
+              <li>Tap <strong>›</strong> to show <strong>Card</strong> → Select Variable → the trigger → <strong>Card or Pass</strong>.</li>
+              <li>Keep <strong>Confirm Before Run</strong> off. Turn <strong>Notify</strong> off if you don't want a banner each time. Save.</li>
+            </ol>
+            <figure class="shot-single"><img src="images/guide/apple-pay-automation.jpg" alt="Apple Pay automation: When Any Card is tapped, then Log Amount at Merchant with Card or Pass" width="572" height="1100" loading="lazy"><figcaption>The finished Apple Pay automation.</figcaption></figure>
+          </div>
+          <div class="callout warning"><p>Apple Pay <strong>inside apps and on websites</strong> doesn't trigger this automation. That's an iOS rule. Those payments are caught by your bank SMS or bank app automation instead.</p></div>
+        </section>
+
+        <section id="bank-apps">
+          <span class="step-tag">Automation 4 · Optional</span>
+          <h2>Bank &amp; UPI app notifications</h2>
+          <p>For banks and UPI apps that notify you in their app instead of by SMS.</p>
+          <ol class="steps">
+            <li>Shortcuts → <strong>Automation</strong> → <strong>+</strong>, then <strong>Edit</strong> if asked.</li>
+            <li>Choose <strong>When I receive a notification</strong>, tap <strong>from</strong> and pick your bank and UPI apps.</li>
+            <li>Search for <code>Text</code> and add the <strong>Text</strong> action. Tap inside it → Select Variable → <strong>Notification</strong>, tap the blue token and choose <strong>Title</strong>.</li>
+            <li>Press return for a new line, add <strong>Notification</strong> again and choose <strong>Body</strong>.</li>
+            <li>Search for <code>Log bank message</code>, add it, and set its message to <strong>Text</strong>.</li>
+            <li>Keep <strong>Notify</strong> off, name it <em>PayPilot Bank Apps</em> and save.</li>
+          </ol>
+        </section>
+
+        <section id="check">
+          <h2>Check it works</h2>
+          <ul>
+            <li>In PayPilot open <strong>Settings → Auto-capture → Test a bank message</strong> and paste a real SMS from your bank. It shows exactly what would be logged, or why not.</li>
+            <li>After your next real payment you get a notification such as <em>“Auto-captured ₹250.00 · Swiggy”</em>. Tap it to check or change the category.</li>
+            <li>Don't run these shortcuts with ▶ yourself. Without a message or payment they have nothing to log.</li>
+          </ul>
+        </section>
+
+        <section id="troubleshooting">
+          <h2>Troubleshooting</h2>
+          <div class="faq-list">
+            <details><summary>Nothing was logged after a payment</summary><p>Check that <strong>Confirm Before Run</strong> is off and the automation is on. Make sure the SMS contains the word in your filter, e.g. “debited”. Then open PayPilot once: items queued while the app was closed are added when it opens.</p></details>
+            <details><summary>It asks me to “Configure Sender”</summary><p>A Sender filter row was added by mistake. Tap the minus next to it to remove it. The automation only needs “Message contains …”.</p></details>
+            <details><summary>The same payment appears twice</summary><p>PayPilot skips repeats from SMS, app notifications and Apple Pay for the same payment. If two genuinely different payments look identical, both are kept. Delete one by swiping left in Spend.</p></details>
+            <details><summary>A one-time password or promotion was logged</summary><p>It shouldn't be: PayPilot ignores OTPs, offers, credits it can't confirm, and messages without an account or payment reference. If one gets through, swipe left to delete it and <a href="support.html">tell us the bank's wording</a> (with numbers removed) so we can fix it.</p></details>
+            <details><summary>Online Apple Pay isn't logged</summary><p>iOS only runs the Wallet automation for taps at a shop. Online payments are picked up by your bank SMS or bank app automation.</p></details>
+          </div>
+        </section>
+
+        <section id="privacy">
+          <h2>Your privacy</h2>
+          <ul>
+            <li>PayPilot can't open your messages. iOS only hands over the texts and notifications your automations pick, such as SMS containing “debited”.</li>
+            <li>Messages are read on your iPhone. The text is never uploaded or sent to any server or AI, and it's deleted as soon as it's read.</li>
+            <li>One-time passwords are recognised and thrown away immediately.</li>
+            <li>Only the expense is kept: amount, merchant, date and the last 4 digits of the card, encrypted before backup.</li>
+            <li>To stop, delete the automation in Shortcuts. See the <a href="privacy.html">privacy policy</a> for details.</li>
+          </ul>
+        </section>
+
+        <section id="android">
+          <h2>On Android</h2>
+          <p>No Shortcuts are needed. Open <strong>Settings → Auto-capture</strong> in PayPilot and tap <strong>Allow notification access</strong>. PayPilot then reads payment notifications from your SMS, bank and UPI apps on the phone, and never from chats or email.</p>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="footer-wrap"><div><a class="brand" href="index.html"><img class="brand-logo" src="paypilot_logo.png" alt="" width="38" height="38">PayPilot</a><p>Clearer money habits, one small step at a time.</p></div><div><h3>Explore</h3><a href="privacy.html">Privacy policy</a><a href="terms.html">Terms & conditions</a><a href="faq.html">FAQ</a><a href="auto-capture.html">Auto-capture guide</a></div><div><h3>Need help?</h3><a href="delete-account.html">Delete account</a><a href="support.html">Contact support</a></div></div><div class="footer-bottom">© <span data-year></span> PayPilot · A product by AppGenie</div></footer>
+  <script src="script.js"></script>
+</body>
+</html>
