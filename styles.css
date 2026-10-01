@@ -155,6 +155,15 @@ figcaption { color: var(--muted); font-size: .86rem; text-align: center; margin-
 
 /* Landing page */
 .landing-hero { min-height: 620px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 390px); align-items: center; gap: 44px; padding-top: 46px; padding-bottom: 56px; overflow: hidden; }
+.prelaunch-hero { grid-template-columns: minmax(0, 1fr); min-height: 560px; }
+.prelaunch-hero .landing-copy { max-width: 760px; }
+.prelaunch-hero .device-stage { display: none; }
+.prelaunch-hero + .landing-intro { display: none; }
+.landing-guides { display: none !important; }
+footer a[href="blog/index.html"] { display: none; }
+body:has(.blog-filter) main { display: none; }
+body:has(.blog-filter) .site-nav a[href="../blog/index.html"] { display: none; }
+body:has(.blog-filter)::after { content: "Guides coming soon."; display: block; width: min(1120px, calc(100% - 40px)); margin: 96px auto; color: var(--muted); font-size: 1.25rem; text-align: center; }
 .landing-copy { position: relative; z-index: 1; }
 .landing-copy h1 { max-width: 650px; font-size: clamp(3.35rem, 5.2vw, 5.7rem); margin: 18px 0 24px; }
 .landing-lede { max-width: 590px; color: var(--muted); font-size: clamp(1.12rem, 1.8vw, 1.35rem); line-height: 1.55; }
