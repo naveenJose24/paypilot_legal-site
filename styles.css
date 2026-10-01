@@ -165,8 +165,6 @@ figcaption { color: var(--muted); font-size: .86rem; text-align: center; margin-
 .device-frame { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: fill; filter: drop-shadow(0 28px 28px rgba(8, 29, 33, .2)); }
 .device-screen { position: absolute; z-index: 2; top: 1.6%; left: 4%; width: 92%; height: 96.8%; object-fit: cover; object-position: center; border-radius: 11% / 5.5%; box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); }
 .device-frame { z-index: 1; pointer-events: none; }
-.device-badge { position: absolute; z-index: 3; right: -6px; bottom: 78px; display: grid; gap: 5px; padding: 16px 18px; border: 1px solid rgba(255,255,255,.7); border-radius: 18px; background: rgba(255,255,255,.88); box-shadow: var(--shadow); transform: rotate(-3deg); }
-.device-badge strong { font-size: 1.2rem; line-height: 1.12; letter-spacing: -.035em; }
 .landing-intro { padding-top: 92px; }
 .landing-feature-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 18px; }
 .feature-panel { min-height: 510px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; padding: 28px; border: 1px solid var(--line); border-radius: 28px; background: var(--card); box-shadow: var(--shadow); }
@@ -217,7 +215,6 @@ figcaption { color: var(--muted); font-size: .86rem; text-align: center; margin-
   .landing-copy h1 { font-size: clamp(3.2rem, 15vw, 5rem); }
   .landing-proof { display: grid; gap: 8px; }
   .device-stage { width: min(86vw, 390px); }
-  .device-badge { right: 0; bottom: 28px; }
   .landing-feature-grid { grid-template-columns: 1fr; }
   .feature-panel-wide { grid-row: auto; min-height: 600px; }
   .feature-panel img, .feature-panel-wide img { width: min(68%, 250px); height: 330px; }
