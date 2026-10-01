@@ -160,10 +160,10 @@ figcaption { color: var(--muted); font-size: .86rem; text-align: center; margin-
 .landing-lede { max-width: 590px; color: var(--muted); font-size: clamp(1.12rem, 1.8vw, 1.35rem); line-height: 1.55; }
 .landing-proof { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 34px; color: var(--muted); font-size: .85rem; }
 .landing-proof strong { color: var(--ink); }
-.device-stage { position: relative; min-height: 610px; display: grid; place-items: center; }
-.device-glow { position: absolute; width: 430px; height: 430px; border-radius: 50%; background: radial-gradient(circle, rgba(35, 201, 156, .48), rgba(8, 120, 209, .16) 48%, transparent 72%); filter: blur(8px); }
-.device-frame { position: relative; width: min(100%, 430px); max-height: 640px; object-fit: contain; filter: drop-shadow(0 28px 28px rgba(8, 29, 33, .2)); }
-.device-screen { position: absolute; z-index: 2; top: 12.5%; left: 18%; width: 64%; height: 73%; object-fit: cover; object-position: center; border-radius: 42px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); }
+.device-stage { position: relative; width: min(100%, 430px); aspect-ratio: 1310 / 2710; margin-inline: auto; }
+.device-glow { position: absolute; top: 50%; left: 50%; width: 430px; height: 430px; border-radius: 50%; background: radial-gradient(circle, rgba(35, 201, 156, .48), rgba(8, 120, 209, .16) 48%, transparent 72%); filter: blur(8px); transform: translate(-50%, -50%); }
+.device-frame { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: fill; filter: drop-shadow(0 28px 28px rgba(8, 29, 33, .2)); }
+.device-screen { position: absolute; z-index: 2; top: 1.6%; left: 4%; width: 92%; height: 96.8%; object-fit: cover; object-position: center; border-radius: 11% / 5.5%; box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); }
 .device-frame { z-index: 1; pointer-events: none; }
 .device-badge { position: absolute; z-index: 3; right: -6px; bottom: 78px; display: grid; gap: 5px; padding: 16px 18px; border: 1px solid rgba(255,255,255,.7); border-radius: 18px; background: rgba(255,255,255,.88); box-shadow: var(--shadow); transform: rotate(-3deg); }
 .device-badge strong { font-size: 1.2rem; line-height: 1.12; letter-spacing: -.035em; }
@@ -203,7 +203,7 @@ figcaption { color: var(--muted); font-size: .86rem; text-align: center; margin-
   .blog-art { max-width: 620px; }
   .landing-hero { grid-template-columns: 1fr; gap: 20px; padding-top: 48px; }
   .landing-copy h1 { max-width: 760px; }
-  .device-stage { min-height: 520px; }
+  .device-stage { width: min(100%, 390px); }
   .landing-strip { grid-template-columns: 1fr; gap: 36px; }
 }
 
@@ -216,8 +216,7 @@ figcaption { color: var(--muted); font-size: .86rem; text-align: center; margin-
   .landing-hero { padding-top: 42px; padding-bottom: 48px; }
   .landing-copy h1 { font-size: clamp(3.2rem, 15vw, 5rem); }
   .landing-proof { display: grid; gap: 8px; }
-  .device-stage { min-height: 430px; }
-  .device-frame { width: min(86vw, 390px); max-height: 500px; }
+  .device-stage { width: min(86vw, 390px); }
   .device-badge { right: 0; bottom: 28px; }
   .landing-feature-grid { grid-template-columns: 1fr; }
   .feature-panel-wide { grid-row: auto; min-height: 600px; }
