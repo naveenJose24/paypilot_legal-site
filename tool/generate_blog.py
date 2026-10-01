@@ -133,7 +133,7 @@ def filter_tags(category: str) -> str:
 
 
 def generated_image_for(slug: str, index: int, category: str) -> str:
-    unique_path = f"images/blog-generated/{slug}.png"
+    unique_path = f"images/blog-generated/{slug}.webp"
     if (ROOT / unique_path).exists():
         return unique_path
     category_lower = category.lower()
