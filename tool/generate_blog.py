@@ -84,7 +84,7 @@ def header(prefix: str, current: str) -> str:
 
 
 def footer(prefix: str) -> str:
-    return f'''<footer class="site-footer"><div class="footer-wrap"><div><a class="brand" href="{prefix}./"><img class="brand-logo" src="{prefix}paypilot_logo-96.webp" alt="" width="38" height="38">PayPilot</a><p>Clearer money habits, one small step at a time.</p></div><div><h3>Explore</h3><a href="/budget-calculator">Budget calculator</a><a href="{prefix}privacy">Privacy policy</a><a href="{prefix}terms">Terms &amp; conditions</a><a href="{prefix}faq">FAQ</a><a href="{prefix}blog/">Money guides</a></div><div><h3>Need help?</h3><a href="{prefix}delete-account">Delete account</a><a href="{prefix}support">Contact support</a></div><div><h3>More from AppGenie</h3><a href="https://barbellfit.appgenie.in/">BarbellFit workout tracker</a><a href="https://attendly.appgenie.in/">Attendly attendance tracker</a><a href="https://resume.appgenie.in/">AI resume builder</a><a href="https://appgenie.in/">AppGenie studio</a></div></div><div class="footer-bottom">© <span data-year></span> PayPilot · A product by AppGenie</div></footer>'''
+    return f'''<footer class="site-footer"><div class="footer-wrap"><div><a class="brand" href="{prefix}./"><img class="brand-logo" src="{prefix}paypilot_logo-96.webp" alt="" width="38" height="38">PayPilot</a><p>Clearer money habits, one small step at a time.</p></div><div><h3>Explore</h3><a href="/budget-calculator">Budget calculator</a><a href="/emi-calculator">EMI calculator</a><a href="/uae-gratuity-calculator">UAE gratuity calculator</a><a href="{prefix}privacy">Privacy policy</a><a href="{prefix}terms">Terms &amp; conditions</a><a href="{prefix}faq">FAQ</a><a href="{prefix}blog/">Money guides</a></div><div><h3>Need help?</h3><a href="{prefix}delete-account">Delete account</a><a href="{prefix}support">Contact support</a></div><div><h3>More from AppGenie</h3><a href="https://barbellfit.appgenie.in/">BarbellFit workout tracker</a><a href="https://attendly.appgenie.in/">Attendly attendance tracker</a><a href="https://resume.appgenie.in/">AI resume builder</a><a href="https://appgenie.in/">AppGenie studio</a></div></div><div class="footer-bottom">© <span data-year></span> PayPilot · A product by AppGenie</div></footer>'''
 
 
 def article(post, index: int) -> str:
@@ -154,7 +154,7 @@ def blog_index() -> str:
 
 
 def sitemap() -> str:
-    urls = ["", "budget-calculator", "privacy", "terms", "faq", "delete-account", "auto-capture", "support", "blog/"] + [f"blog/{p[0]}" for p in POSTS]
+    urls = ["", "budget-calculator", "emi-calculator", "uae-gratuity-calculator", "privacy", "terms", "faq", "delete-account", "auto-capture", "support", "blog/"] + [f"blog/{p[0]}" for p in POSTS]
     body = "".join(f"<url><loc>{BASE_URL}/{u}</loc><lastmod>{DATE}</lastmod></url>" for u in urls)
     return f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{body}</urlset>\n'
 
