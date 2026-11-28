@@ -1,7 +1,7 @@
 """Add contextual internal links between PayPilot's tools, guides and homepage.
 
 Idempotent: each block is wrapped in <!-- il:NAME --> ... <!-- /il:NAME --> and replaced on re-run.
-Run after tool/generate_blog.py:  python3 tool/add_internal_links.py
+Run after tool/build_guides.py:  python3 tool/add_internal_links.py
 """
 import re
 from pathlib import Path
@@ -28,15 +28,15 @@ for f in sorted((ROOT / "blog").glob("*.html")):
 RULES = [  # keyword in guide slug -> tools to recommend
     (("loan", "emi", "repayment", "credit-card"), ["emi-calculator", "budget-calculator"]),
     (("uae", "aed", "dubai", "expat", "nri", "rent"), ["uae-gratuity-calculator", "budget-calculator"]),
-    (("sms", "apple-pay", "bank", "upi", "automatic", "notification", "private", "safe"), ["sms-expense-tracker-iphone", "budget-calculator"]),
+    (("sms", "bank", "automatic", "money-manager"), ["sms-expense-tracker-iphone", "budget-calculator"]),
     (("budget", "cash-flow", "income", "freelancer", "spend", "subscription"), ["budget-calculator", "emi-calculator"]),
 ]
 
 TOOL_GUIDES = {  # guides to show on each tool page
-    "emi-calculator": ["track-loan-repayments", "loan-tracker-money-lent", "credit-card-spending-tracker"],
-    "uae-gratuity-calculator": ["expense-tracker-uae-expats", "dubai-salary-budget", "track-expenses-in-aed"],
-    "budget-calculator": ["dubai-salary-budget", "safe-to-spend-calculator", "free-budget-tracker-india"],
-    "sms-expense-tracker-iphone": ["automatic-expense-tracker-bank-sms", "apple-pay-expense-tracker", "is-sms-expense-tracker-safe"],
+    "emi-calculator": ["loan-tracker-money-lent", "credit-card-spending-tracker", "dubai-salary-budget"],
+    "uae-gratuity-calculator": ["nri-expense-tracker-uae-india", "dubai-salary-budget", "best-expense-tracker-app-uae"],
+    "budget-calculator": ["dubai-salary-budget", "safe-to-spend-calculator", "freelancer-variable-income-tracker"],
+    "sms-expense-tracker-iphone": ["automatic-expense-tracker-bank-sms", "is-sms-expense-tracker-safe", "best-expense-tracker-app-india"],
 }
 
 
@@ -72,7 +72,7 @@ html = idx.read_text()
 cards = [card(s, *TOOLS[s]) for s in TOOLS]
 html = put(html, "tools", block("tools", "Free tools", "Free money calculators and guides", cards, " page-shell"), '<section class="landing-guides')
 popular = ["best-expense-tracker-app-uae", "best-expense-tracker-app-india", "automatic-expense-tracker-bank-sms",
-           "subscription-tracker-monthly-bills", "track-loan-repayments", "expense-tracker-without-bank-login"]
+           "subscription-tracker-monthly-bills", "loan-tracker-money-lent", "is-sms-expense-tracker-safe"]
 pcards = [card(f"blog/{s}", *GUIDES[s]) for s in popular if s in GUIDES]
 html = put(html, "popular", block("popular", "Popular guides", "Start with these money guides", pcards, " page-shell"), '</main>')
 idx.write_text(html); changed += 1

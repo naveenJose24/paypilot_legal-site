@@ -166,9 +166,6 @@ figcaption { color: var(--muted); font-size: .86rem; text-align: center; margin-
 .landing-hero { min-height: 620px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 390px); align-items: center; gap: 44px; padding-top: 46px; padding-bottom: 56px; overflow: hidden; }
 .landing-guides { display: none !important; }
 footer a[href="blog/index.html"] { display: none; }
-body:has(.blog-filter) main { display: none; }
-body:has(.blog-filter) .site-nav a[href="../blog/index.html"] { display: none; }
-body:has(.blog-filter)::after { content: "Guides coming soon."; display: block; width: min(1120px, calc(100% - 40px)); margin: 96px auto; color: var(--muted); font-size: 1.25rem; text-align: center; }
 .landing-copy { position: relative; z-index: 1; }
 .landing-copy h1 { max-width: 650px; font-size: clamp(3.35rem, 5.2vw, 5.7rem); margin: 18px 0 24px; }
 .landing-lede { max-width: 590px; color: var(--muted); font-size: clamp(1.12rem, 1.8vw, 1.35rem); line-height: 1.55; }
@@ -249,3 +246,7 @@ body:has(.blog-filter)::after { content: "Guides coming soon."; display: block; 
   .feature-panel img, .feature-panel-wide img { width: min(68%, 250px); height: 330px; }
   .guide-callout { align-items: flex-start; }
 }
+.legal-content table{width:100%;border-collapse:collapse;margin:18px 0 8px;font-size:.95rem;display:block;overflow-x:auto}
+.legal-content th,.legal-content td{padding:10px 12px;border-bottom:1px solid rgba(15,23,42,.1);text-align:left;vertical-align:top}
+.legal-content th{font-weight:700;background:rgba(15,23,42,.04)}
+@media(max-width:640px){.legal-content th,.legal-content td{min-width:150px;font-size:.875rem;padding:9px 10px}}
